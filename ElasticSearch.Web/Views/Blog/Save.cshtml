@@ -1,0 +1,34 @@
+﻿@using ElasticSearch.Web.ViewMoels
+@model BlogCreateViewModel
+@{
+    ViewData["Title"] = "Save";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Blog Create</h2>
+
+        <form method="post">
+
+            <div class="mb-3">
+
+                <label asp-for="Title" class="form-control"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label">Example textarea</label>
+                <textarea asp-for="Content" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Tags" class="form-label">Tags</label>
+                <textarea asp-for="Tags" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

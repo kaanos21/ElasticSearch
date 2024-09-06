@@ -1,0 +1,68 @@
+﻿@model ElasticSearch.Web.ViewMoels.SeachPageViewModel
+@{
+    
+}
+
+<div class="container">
+    <div class="col-md-4">
+        <form method="get" asp-action="Search">
+            <div class="mb-3">
+                <label asp-for="SearchViewModel.CustomerFullName" class="form-label">customer full name</label>
+                <textarea asp-for="SearchViewModel.CustomerFullName" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label asp-for="SearchViewModel.Category" class="form-control">Kategori</label>
+                <input asp-for="SearchViewModel.Category" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="SearchViewModel.Gender" class="form-label">Cinsiyet</label>
+                <textarea asp-for="SearchViewModel.Gender" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label asp-for="SearchViewModel.OrderDateStart" class="form-label">Start Date</label>
+                <input asp-for="SearchViewModel.OrderDateStart" type="date" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="SearchViewModel.OrderDateEnd" class="form-label">End Date</label>
+                <input asp-for="SearchViewModel.OrderDateEnd" type="date" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-8">
+        <div class="alert alert-success">
+            <span>toplam : @Model.TotalCount Kayıt bulunmuştur</span>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Customer FullName</th>
+                    <th>Order Date</th>
+                    <th>Gender</th>
+                    <th>TaxfulTotalPrice</th>
+                    <th>Category</th>
+                    <th>OrderId</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.List)
+                {
+                    <tr>
+                        <td>@item.CustomerFullName</td>
+                        <td>@item.OrderDate</td>
+                        <td>@item.Gender</td>
+                        <td>@item.TaxfulTotalPrice</td>
+                        <td>@item.Category</td>
+                        <td>@item.OrderId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

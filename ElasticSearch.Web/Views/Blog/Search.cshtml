@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+}
+@model List<ElasticSearch.Web.Model.Blog>
+<div class="container">
+    <div class="col-md-10 offset-1-md-1">
+        <form method="post" >
+            <div class="mb-3">
+                <label>Search(Title,Content)</label>
+                <input name="SearchText" class="form-control" />
+            </div>
+
+            <button type="submit">Search</button>
+
+        </form>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">Sonuç yok</div>
+            <h3>ZAAAAAAAAA SONUÇ YOKKKKKK</h3>
+        }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>UserId</th>
+                    <th>Tags</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.Content</td>
+                        <td>@item.UserId</td>
+                        <td>@String.Join(",",item.Tags)</td>
+                        <td>@item.Created.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
